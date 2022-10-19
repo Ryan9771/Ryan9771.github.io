@@ -1436,11 +1436,12 @@ ul.modal-list {
     }
 }
 
-@media (max-width: 600px) {
+@media (min-width: 560px) and (max-width: 600px) {
     #home-section {
         height: 40rem;
         justify-content: center;
         align-items: center;
+        display: flex;
     }
 
     .heading {
@@ -1523,6 +1524,154 @@ ul.modal-list {
         position: absolute;
         left: -0.8rem;
         padding: 0.3rem;
+    }
+
+    .logo-text {
+        display: none;
+        padding: 0;
+    }
+
+    .logo-icon {
+        margin: 0;
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+
+    .next-btn {
+        right: 1.5rem;
+        bottom: 0rem;
+    }
+
+    #about-section {
+        height: 45rem;
+    }
+
+    .about-ctn {
+        flex-direction: column;
+        border-right: none;
+    }
+
+    .heading-ctn {
+        border: none;
+        border-bottom: 1px solid black;
+        width: 60%;
+        align-self: center;
+    }
+
+    .modal-text-img-ctn {
+        display: flex;
+        flex-direction: column;
+        /* margin-top: 10rem; */
+    }
+
+    .modal-info {
+        padding: 1rem 0.5rem;
+    }
+
+    .modal-text {
+        position: static;
+        width: 100%;
+    }
+
+    .modal-img-ctn {
+        position: static;
+        margin-top: 20rem;
+        transform: scale(0.9);
+    }
+
+    .modal-close {
+        right: 2rem;
+    }
+}
+
+@media screen and (max-width: 560px) {
+
+    #home-section {
+        height: 40rem;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .heading {
+        transform: scale(1.2);
+        position: static;
+        transform: scale(0.9);
+    }
+
+    .home-img { 
+        right: 4rem;
+        width: 17rem;
+        display: none;
+    }
+
+    .heading-about {
+        font-size: 2.4rem;
+        text-align: center;
+    }
+
+    .btm-left-corner {
+        left: -3.5rem;
+        bottom: -2rem;
+    }
+    
+    .top-right-corner {
+        top: -2rem;
+        right: -3.5rem;
+    }
+
+    .about-icons-ctn {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .contact-icons {
+        width: 10rem;
+        padding: 0.4rem 1rem;
+        margin-right: 0;
+    }  
+    
+    .nav-li {
+        margin: 0 0.6rem;
+    }
+
+    #home-about {
+        height: 30rem;
+    }
+
+    .blue-overlay {
+        width: 25rem;
+    }
+
+    .info-bar {
+        left: 4.1rem;
+    }
+
+    .info-bar-row {
+        margin-bottom: 1.5rem;
+    }
+
+    .hobby-bar-row {
+        margin-bottom: 1.5rem;
+    }
+
+    .hobby-bar {
+        left: 4.1rem;
+        top: 15.5rem;
+    }
+
+    nav ul {
+        margin-right: 0;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    #logo {
+        display: none;
     }
 
     .logo-text {
