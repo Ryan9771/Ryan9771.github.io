@@ -1563,6 +1563,10 @@ ul.modal-list {
         /* margin-top: 10rem; */
     }
 
+    .modal-info {
+        padding: 1rem 0.5rem;
+    }
+
     .modal-text {
         position: static;
         width: 100%;
@@ -1572,6 +1576,10 @@ ul.modal-list {
         position: static;
         margin-top: 20rem;
         transform: scale(0.9);
+    }
+
+    .modal-close {
+        right: 2rem;
     }
 
 }
