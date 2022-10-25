@@ -29,6 +29,7 @@ html {
 body {
     overscroll-behavior: none;
     background-color: var(--background-primary);
+    min-width: 350px;
 }
 
 .break-line {
@@ -73,6 +74,7 @@ nav {
     z-index: 100;
     padding: 30px 10px;
     padding-left: 20px;
+    background-color: var(--background-primary);
 }
 
 #logo:hover {
@@ -304,13 +306,14 @@ nav ul {
 /* ===== ABOUT SECTION ====== */
 
 #about-section {
-    margin-top: 5rem;
+    margin-top: 8rem;
     width: 100%;
-    height: 38rem;
+    height: 50rem;
     position: relative;
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    flex-direction: column;
 }
 
 .about-ctn {
@@ -347,6 +350,7 @@ nav ul {
     justify-content: center;
     flex-direction: column;
     margin-left: 4rem;
+    min-width: 400px;
 }
 
 .about-text-ctn {
@@ -363,8 +367,9 @@ nav ul {
 }
 
 .next-btn {
+    /* cleared */
     position: absolute;
-    bottom: 2rem;
+    bottom: 10rem;
     right: 3rem;
     transition: all 200ms;
     cursor: pointer;
@@ -434,6 +439,12 @@ nav ul {
     transform: scale(1.05);
 }
 
+.about-hr {
+    margin: 5rem 0rem;
+    background-color: none;
+    border-top: 0.4px solid rgb(194, 194, 194);
+    width: 100%;
+}
 
 /* ==== PROJECT SECTION ==== */
 
@@ -444,7 +455,7 @@ nav ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 7rem;
+    margin-top: 9rem;
     position: relative;
     /* overflow-y: scroll; */
 }
@@ -594,9 +605,7 @@ nav ul {
     width: 98%;
     position: relative;
     height: 40rem;
-    /* border: 1px solid gray; */
     padding: 2rem 3rem;
-    /* overflow: */
 }
 
 .modal-heading {
@@ -1272,8 +1281,9 @@ ul.modal-list {
     }
 
     .next-btn {
+        /* cleared */
         right: 1.5rem;
-        bottom: 0rem;
+        bottom: 8rem;
     }
 
     #about-section {
@@ -1395,12 +1405,13 @@ ul.modal-list {
     }
 
     .next-btn {
+        /* cleared */
         right: 1.5rem;
-        bottom: 0rem;
+        bottom: 6rem;
     }
 
     #about-section {
-        height: 45rem;
+        height: 50rem;
     }
 
     .about-ctn {
@@ -1538,6 +1549,7 @@ ul.modal-list {
     }
 
     .next-btn {
+        /* cleared */
         right: 1.5rem;
         bottom: 0rem;
     }
@@ -1582,6 +1594,10 @@ ul.modal-list {
     .modal-close {
         right: 2rem;
     }
+
+    .grey-width {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 560px) {
@@ -1594,9 +1610,12 @@ ul.modal-list {
     }
 
     .heading {
-        transform: scale(1.2);
         position: static;
-        transform: scale(0.9);
+        transform: scale(0.8);
+    }
+
+    .greeting-1, .greeting-2, .home-heading, .home-text {
+        transform: scale(0.8);
     }
 
     .home-img { 
@@ -1642,11 +1661,11 @@ ul.modal-list {
     }
 
     .blue-overlay {
-        width: 25rem;
+        transform: scale(0.8);
     }
 
     .info-bar {
-        left: 4.1rem;
+        left: 3.1rem;
     }
 
     .info-bar-row {
@@ -1658,8 +1677,9 @@ ul.modal-list {
     }
 
     .hobby-bar {
-        left: 4.1rem;
+        left: 3.1rem;
         top: 15.5rem;
+        
     }
 
     nav ul {
@@ -1686,17 +1706,19 @@ ul.modal-list {
     }
 
     .next-btn {
-        right: 1.5rem;
+        opacity: 0.5;
+        right: 2rem;
         bottom: 0rem;
     }
 
     #about-section {
-        height: 45rem;
+        height: 50rem;
     }
 
     .about-ctn {
         flex-direction: column;
         border-right: none;
+        min-width: 350px;
     }
 
     .heading-ctn {
@@ -1709,7 +1731,6 @@ ul.modal-list {
     .modal-text-img-ctn {
         display: flex;
         flex-direction: column;
-        /* margin-top: 10rem; */
     }
 
     .modal-info {
@@ -1729,6 +1750,10 @@ ul.modal-list {
 
     .modal-close {
         right: 2rem;
+    }
+
+    .grey-width {
+        display: none;
     }
 
 }
