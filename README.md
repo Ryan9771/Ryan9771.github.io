@@ -1,3 +1,5 @@
 # Personal-Website
 
-This website is currently in the process of being deployed, and should be back up by the end of today (24th December)
+A personal website to display some of my projects and portfolio.
+
+It was a great way to practice the fundamentals of web development.

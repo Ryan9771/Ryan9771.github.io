@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/*.html", "./src/Modals/*.html"],
+  content: [
+    "./*.html", 
+    "./Modals/*.html"
+  ],
   theme: {
     extend: {
       minWidth: {
