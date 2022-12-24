@@ -1,3 +1,3 @@
 # Personal-Website
 
-A small project I am undertaking to build my fundamentals with with development, and to build a personal website.
+This website is currently in the process of being deployed, and should be back up by the end of today (24th December)
