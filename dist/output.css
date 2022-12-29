@@ -1238,20 +1238,12 @@ video {
   width: 15rem;
 }
 
-.w-64 {
-  width: 16rem;
-}
-
-.w-40 {
-  width: 10rem;
-}
-
-.w-48 {
-  width: 12rem;
-}
-
 .w-52 {
   width: 13rem;
+}
+
+.w-64 {
+  width: 16rem;
 }
 
 .min-w-300 {
@@ -1315,16 +1307,12 @@ video {
   border-radius: 0.75rem;
 }
 
-.rounded-4xl {
-  border-radius: 2.5rem;
-}
-
 .rounded-2xl {
   border-radius: 1rem;
 }
 
-.rounded-3xl {
-  border-radius: 1.5rem;
+.rounded-4xl {
+  border-radius: 2.5rem;
 }
 
 .rounded-l {

@@ -2,7 +2,10 @@
 module.exports = {
   content: [
     "./*.html", 
-    "./Modals/*.html"
+    "./projects/*.html",
+    "./current/*.html",
+    "./blog/*.html",
+    "./tutoring/*.html",
   ],
   theme: {
     extend: {
