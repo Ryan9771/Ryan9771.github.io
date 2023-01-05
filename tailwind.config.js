@@ -4,7 +4,6 @@ module.exports = {
     "./*.html", 
     "./projects/*.html",
     "./current/*.html",
-    "./blog/*.html",
     "./tutoring/*.html",
   ],
   theme: {
