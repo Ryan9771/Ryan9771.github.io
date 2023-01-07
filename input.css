@@ -71,7 +71,7 @@
     }
 
     .modal-close-btn-svg {
-        @apply w-5 h-5 sm:w-6 sm:h-6 absolute left-4 top-6 sm:top-10 hover:rotate-[-180deg] hover:scale-110 trans;
+        @apply w-5 h-5 sm:w-6 sm:h-6 absolute left-5 md:left-12 top-6 sm:top-10 hover:rotate-[-180deg] hover:scale-110 trans;
     }
 
     .modal-heading {
