@@ -33,6 +33,11 @@ function loadData() {
     /* Clears the table to prevent overwriting to it */
     tbody.empty()
 
+    /* Sort the array based on the index */
+    dataArray.sort(function(a, b) {
+        return b[5] - a[5];
+    });
+
     /* Keeps track of the rank of the current row */
     var rank = 1;
     
@@ -161,7 +166,7 @@ $(document).on('blur', '#csv-table td[contenteditable]', function() {
 
     if (clusterMode) {
         /* Calculate the P1 - P4 in the case of an active clusters mode */
-        for (let i = 1; i < dataArray.length; i++) {
+        for (let i = 1; i < dataArray.length - 1; i++) {
             let cluster = dataArray[i][6];
             let oldValue = parseFloat(dataArray[i][colIndex]);
             let newValue = oldValue + (difference * cluster);
@@ -173,10 +178,6 @@ $(document).on('blur', '#csv-table td[contenteditable]', function() {
         dataArray[rowIndex][5] = average.toFixed(3);
     }
     
-    /* Sort the array based on the index */
-    dataArray.sort(function(a, b) {
-        return b[5] - a[5];
-    });
     loadData(dataArray);
 });
 

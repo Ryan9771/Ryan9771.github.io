@@ -1099,10 +1099,6 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.static {
-  position: static;
-}
-
 .fixed {
   position: fixed;
 }
@@ -1516,14 +1512,14 @@ video {
   background-color: rgb(255 251 235 / var(--tw-bg-opacity));
 }
 
-.bg-imperial-blue {
-  --tw-bg-opacity: 1;
-  background-color: rgb(1 89 165 / var(--tw-bg-opacity));
-}
-
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.bg-imperial-blue {
+  --tw-bg-opacity: 1;
+  background-color: rgb(1 89 165 / var(--tw-bg-opacity));
 }
 
 .bg-discord {
