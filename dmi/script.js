@@ -161,8 +161,6 @@ $(document).on('blur', '#csv-table td[contenteditable]', function() {
 
     dataArray[rowIndex][colIndex] = $(this).text();
 
-    var sum = parseFloat(dataArray[rowIndex][1]) + parseFloat(dataArray[rowIndex][2]) + parseFloat(dataArray[rowIndex][3]) + parseFloat(dataArray[rowIndex][4]);
-    var average = sum / 4;
 
     if (clusterMode) {
         /* Calculate the P1 - P4 in the case of an active clusters mode */
@@ -172,9 +170,15 @@ $(document).on('blur', '#csv-table td[contenteditable]', function() {
             let newValue = oldValue + (difference * cluster);
 
             dataArray[i][colIndex] = newValue.toFixed(3);
+
+            var sum = parseFloat(dataArray[i][1]) + parseFloat(dataArray[i][2]) + parseFloat(dataArray[i][3]) + parseFloat(dataArray[i][4]);
+            var average = sum / 4;
+            dataArray[i][5] = average.toFixed(3);
         }
     } else {
         /* Update the index's value to the new average */
+        var sum = parseFloat(dataArray[rowIndex][1]) + parseFloat(dataArray[rowIndex][2]) + parseFloat(dataArray[rowIndex][3]) + parseFloat(dataArray[rowIndex][4]);
+        var average = sum / 4;
         dataArray[rowIndex][5] = average.toFixed(3);
     }
     
