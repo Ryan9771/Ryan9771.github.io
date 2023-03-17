@@ -78,19 +78,21 @@ $(document).ready(function() {
 
 /* Formats the string into a 5 digit number */
 function formatNumber(str) {
-    var decimalIndex = str.indexOf(".");
-    if (decimalIndex === -1) {
-        str += ".000";
-        decimalIndex = str.indexOf(".");
-    }
-    var numDecimals = str.length - decimalIndex - 1;
-    if (numDecimals === 0) {
-        str += "00";
-    } else if (numDecimals === 1) {
-        str += "0";
-    }
+    // var decimalIndex = str.indexOf(".");
+    // if (decimalIndex === -1) {
+    //     str += ".000";
+    //     decimalIndex = str.indexOf(".");
+    // }
+    // var numDecimals = str.length - decimalIndex - 1;
+    // if (numDecimals === 0) {
+    //     str += "00";
+    // } else if (numDecimals === 1) {
+    //     str += "0";
+    // }
     
-    return Number.parseFloat(str).toFixed(2);
+    // return Number.parseFloat(str).toFixed(2);
+
+    return Number.parseFloat(str);
   }
 
 
@@ -162,7 +164,7 @@ $(document).on('blur', '#csv-table td[contenteditable]', function() {
         for (let i = 1; i < dataArray.length; i++) {
             let cluster = dataArray[i][6];
             let oldValue = parseFloat(dataArray[i][colIndex]);
-            let newValue = oldValue - (difference * cluster);
+            let newValue = oldValue + (difference * cluster);
 
             dataArray[i][colIndex] = newValue.toFixed(3);
         }
