@@ -1,12 +1,16 @@
 
 /* The data array that holds the csv values */
 var dataArray;
+var correlations;
 
 /* Keeps track which mode the table is in (regular / clusters) */
 var clusterMode = false;
 
+/* Keeps track whether the table calculates values based on correlations */
+var correlationMode = false;
+
 /* Converts the csv to a 2d array */
-function csvToArray(csvData) {
+function dataToArray(csvData) {
   var rows = csvData.split('\n');
   var dataArray = [];
   for (var i = 0; i < rows.length; i++) {
@@ -14,6 +18,42 @@ function csvToArray(csvData) {
     dataArray.push(row);
   }
   return dataArray;
+}
+
+/* Converts the correlations csv to a nested dictionary */
+function correlationsToArray(csvData) {
+    /* Gets the rows and headers of the csv file */
+    var rows = csvData.split('\n');
+    var headers = rows[0].split(',');
+
+    var dict = {};
+
+    /* Creates an empty entry for each country name */
+    for (let i = 1; i < headers.length; i++) {
+        var header = headers[i].trim();
+        if (header === "") {
+            continue;
+        }
+        dict[header] = {};
+    }
+
+    /* Each country is assigned an inner dictionary with all other country
+        correlations */
+    for (let i = 1; i < rows.length; i++) {
+        var values = rows[i].split(',');
+        var country = values[0].trim();
+
+        var innerDict = {}
+
+        for (let j = 1; j < headers.length; j++) {
+            var header = headers[j].trim();
+            innerDict[header] = parseFloat(values[j]);
+        }
+
+        dict[country] = innerDict;
+    }
+
+    return dict;
 }
 
 /* Re-writes / reloads the table */
@@ -75,9 +115,14 @@ function loadData() {
 /* Load the table and convert csv to array upon document load */
 $(document).ready(function() {
     $.get('./dmi_2023_clusters.csv', function(data) {
-        dataArray = csvToArray(data);
+        dataArray = dataToArray(data);
 
         loadData(dataArray); 
+    });
+
+    $.get('./correlations.csv', function(data) {
+        correlations = correlationsToArray(data);
+        console.log(correlations);
     });
 });
 
@@ -138,7 +183,13 @@ $(document).on('keydown', '#csv-table td[contenteditable]', function(e) {
 // ====================== CALCULATIONS ====================== \\
 $('#clusters-toggle').click(function() {
     clusterMode = !clusterMode;
+    $(this).toggleClass("border-black");
     loadData(dataArray);
+})
+
+$('#correlations-toggle').click(function() {
+    correlationMode = !correlationMode;
+    $(this).toggleClass("border-black");
 })
 
 
@@ -157,18 +208,19 @@ $(document).on('blur', '#csv-table td[contenteditable]', function() {
     var idParts = $(this).attr('id').split('-');
     var rowIndex = parseInt(idParts[0]);
     var colIndex = parseInt(idParts[1]);
-    let difference = $(this).text() - dataArray[rowIndex][colIndex];
 
+    const difference = $(this).text() - dataArray[rowIndex][colIndex];
     dataArray[rowIndex][colIndex] = $(this).text();
 
 
-    if (clusterMode) {
+    if (correlationMode) {
         /* Calculate the P1 - P4 in the case of an active clusters mode */
-        for (let i = 1; i < dataArray.length - 1; i++) {
-            let cluster = dataArray[i][6];
-            let oldValue = parseFloat(dataArray[i][colIndex]);
-            let newValue = oldValue + (difference * cluster);
+        const baseCountry = dataArray[rowIndex][0];
 
+        for (let i = 1; i < dataArray.length - 1; i++) {
+
+
+            const newValue = parseFloat(dataArray[i][colIndex]) + (parseFloat(correlations[baseCountry][dataArray[i][0]]) * difference);
             dataArray[i][colIndex] = newValue.toFixed(3);
 
             var sum = parseFloat(dataArray[i][1]) + parseFloat(dataArray[i][2]) + parseFloat(dataArray[i][3]) + parseFloat(dataArray[i][4]);
