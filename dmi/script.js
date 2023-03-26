@@ -82,11 +82,14 @@ function loadData() {
         return b[5] - a[5];
     });
 
+    /* Group calculation */
+    var groupIndex = 10 * (group - 1) + 1;
+
     /* Keeps track of the rank of the current row */
-    var rank = 1;
+    var rank = groupIndex;
     
     /* Add table body */
-    for (var i = 1; i < dataArray.length; i++) {
+    for (var i = groupIndex; i < groupIndex + 10; i++) {
         var row = $('<tr class=\"row-line\"></tr>');
         var cols = dataArray[i];
 
