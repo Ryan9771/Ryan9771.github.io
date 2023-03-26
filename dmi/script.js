@@ -82,7 +82,7 @@ function loadData() {
     var rank = 1;
     
     /* Add table body */
-    for (var i = 1; i < dataArray.length - 1; i++) {
+    for (var i = 1; i < dataArray.length; i++) {
         var row = $('<tr class=\"row-line\"></tr>');
         var cols = dataArray[i];
 
