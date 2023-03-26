@@ -9,6 +9,10 @@ var clusterMode = false;
 /* Keeps track whether the table calculates values based on correlations */
 var correlationMode = false;
 
+/* Keeps track of the current rank group */
+var group = 1;
+
+
 /* Converts the csv to a 2d array */
 function dataToArray(csvData) {
   var rows = csvData.split('\n');
@@ -128,22 +132,9 @@ $(document).ready(function() {
 
 /* Formats the string into a 5 digit number */
 function formatNumber(str) {
-    // var decimalIndex = str.indexOf(".");
-    // if (decimalIndex === -1) {
-    //     str += ".000";
-    //     decimalIndex = str.indexOf(".");
-    // }
-    // var numDecimals = str.length - decimalIndex - 1;
-    // if (numDecimals === 0) {
-    //     str += "00";
-    // } else if (numDecimals === 1) {
-    //     str += "0";
-    // }
-    
-    // return Number.parseFloat(str).toFixed(2);
-
+    // TODO
     return Number.parseFloat(str);
-  }
+}
 
 
 /* Restricts what keys can be entered, and handles exiting cell if entered or escape is pressed */
