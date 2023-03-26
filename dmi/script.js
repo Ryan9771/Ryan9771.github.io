@@ -175,6 +175,8 @@ $(document).on('keydown', '#csv-table td[contenteditable]', function(e) {
 });
 
 // ====================== CALCULATIONS ====================== \\
+
+/* BUTTON HANDLINGS */
 $('#clusters-toggle').click(function() {
     clusterMode = !clusterMode;
     $(this).toggleClass("border-black");
@@ -186,6 +188,19 @@ $('#correlations-toggle').click(function() {
     $(this).toggleClass("border-black");
 })
 
+$('#prev-btn').click(function() {
+    if (group > 1) {
+        group -= 1;
+        loadData(dataArray);
+    }
+})
+
+$('#next-btn').click(function() {
+    if (group < 10) {
+        group += 1;
+        loadData(dataArray);
+    }
+})
 
 /* Handles calculating index, sorting the rows, and reloading the table when the cell is exited */
 $(document).on('blur', '#csv-table td[contenteditable]', function() {
