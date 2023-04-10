@@ -11,7 +11,10 @@ var correlationMode = false;
 
 /* Keeps track of the current rank group */
 var group = 1;
+var groupMobile = 1;
 
+/* A list that can be used to map index to header values for mobile table */
+const headerList = ["Country", "P1", "P2", "P3", "P4", "Index"];
 
 /* Converts the csv to a 2d array */
 function dataToArray(csvData) {
@@ -62,8 +65,72 @@ function correlationsToArray(csvData) {
 
 /* Re-writes / reloads the table */
 function loadData() {
+    /* Desktop table */
     var table = $('#csv-table');
     var tbody = table.find('tbody');
+
+    /* Mobile table */
+    var tableMobile = $('#csv-table-mobile');
+
+    /* Clears the table to prevent overwriting to it */
+    tbody.empty()
+
+    /* Sort the array based on the index */
+    dataArray.sort(function(a, b) {
+        return b[5] - a[5];
+    });
+
+    // === MOBILE TABLE LOADING === \\ 
+    
+    var groupIndexMobile = 5 * (groupMobile - 1) + 1;
+    var rankMobile = groupIndexMobile;
+
+    /* Adds margin to the top of the table if its not the first */
+    var firstTable = true;
+
+    for (var i = groupIndexMobile; i < groupIndexMobile + 5; i++) {
+        if (!firstTable) {
+            var iterTable = $('<table class=\"w-full mt-1 h-full text-left\"></table>');
+        } else {
+            var iterTable = $('<table class=\"w-full h-full text-left\"></table>');
+            firstTable = false;
+        }
+        var iterTableBody = $('<tbody class=\"rounded-xl\"></tbody>');
+        var iterCols = dataArray[i];
+
+        var rankRow = $('<tr></tr>');
+        rankRow.append('<th class=\"headers-mobile-rank\">Rank</th>');
+        rankRow.append('<th class=\"row-header-mobile\">' + String(rankMobile) + '</th>');
+        rankMobile++;
+        iterTableBody.append(rankRow);
+
+        for (var j = 0; j < iterCols.length - 2; j++) {
+            var iterRow = $('<tr></tr>');
+            iterRow.append('<td class=\"headers-mobile\">' + headerList[j] + '</td>');
+            if (j >= 1 && j <= 4) {
+                var content = parseFloat(iterCols[j]).toFixed(3);
+                iterRow.append('<td class=\"rows-mobile\" contenteditable>' + String(content) + '</td>');
+            } else if (j === 5) {
+                var content = parseFloat(iterCols[j]).toFixed(3);
+                iterRow.append('<td class=\"rows-mobile\">' + String(content) + '</td>');
+            } else {
+                iterRow.append('<td class=\"rows-mobile\">' + String(iterCols[j]) + '</td>');
+            }
+            iterTableBody.append(iterRow);
+        }
+
+        if (clusterMode) {
+            var clusterRow = $('<tr></tr>');
+            clusterRow.append('<td class=\"headers-mobile\">Clusters</td>');
+            clusterRow.append('<td class=\"rows-mobile text-center\">' + String(iterCols[6]) + '</td>');
+            iterTableBody.append(clusterRow);
+        }
+
+        iterTable.append(iterTableBody);
+        tableMobile.append(iterTable);
+    }
+
+    // === DESKTOP TABLE LOADING === \\
 
     /* Adds the cluster column if clusterMode is active */
     if (clusterMode) {
@@ -74,19 +141,19 @@ function loadData() {
         $('#cluster-header').remove();
     }
 
-    /* Clears the table to prevent overwriting to it */
-    tbody.empty()
-
-    /* Sort the array based on the index */
-    dataArray.sort(function(a, b) {
-        return b[5] - a[5];
-    });
-
     /* Group calculation */
     var groupIndex = 10 * (group - 1) + 1;
 
     /* Keeps track of the rank of the current row */
     var rank = groupIndex;
+
+    if (clusterMode) {
+        if ($('#table-header').children('#cluster-header').length === 0) {
+            $('#table-header').append('<th id=\"cluster-header\" class=\"headers text-center\">Clusters</th>');
+        }
+    } else {
+        $('#cluster-header').remove();
+    }
     
     /* Add table body */
     for (var i = groupIndex; i < groupIndex + 10; i++) {

@@ -148,12 +148,32 @@
         @apply p-3 px-6 uppercase bg-imperial-blue text-sm tracking-wide;
     }
 
+    .headers-mobile {
+        @apply p-1 px-6 uppercase bg-imperial-blue text-sm tracking-wide w-10 text-white font-bold;
+    }
+
+    .headers-mobile-rank {
+        @apply p-1 px-6 pt-3 uppercase bg-imperial-blue text-sm tracking-wide w-10 text-white font-bold;
+    }
+
+    .headers-mobile-btm {
+        @apply p-1 px-6 pb-3 uppercase bg-imperial-blue text-sm tracking-wide w-10 text-white font-bold;
+    }
+
     .row-header {
         @apply px-6 py-3 text-center font-medium whitespace-nowrap;
     }
 
+    .row-header-mobile {
+        @apply px-6 py-1 bg-white text-center font-medium whitespace-nowrap;
+    }
+
     .rows {
         @apply text-gray-700 px-6 py-4 text-sm whitespace-nowrap;
+    }
+
+    .rows-mobile {
+        @apply text-center bg-white text-gray-700 px-6 py-1 text-sm whitespace-nowrap;
     }
 
     .row-line {
@@ -161,7 +181,7 @@
     }
 
     .maps {
-        @apply border-b border shadow-md rounded-lg w-[450px] m-4;
+        @apply hidden border-b border shadow-md rounded-lg sm:w-[450px] m-4;
     }
 }
 
