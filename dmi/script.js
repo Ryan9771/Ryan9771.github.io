@@ -73,7 +73,8 @@ function loadData() {
     var tableMobile = $('#csv-table-mobile');
 
     /* Clears the table to prevent overwriting to it */
-    tbody.empty()
+    tbody.empty();
+    tableMobile.empty();
 
     /* Sort the array based on the index */
     dataArray.sort(function(a, b) {
@@ -260,11 +261,21 @@ $('#prev-btn').click(function() {
         group -= 1;
         loadData(dataArray);
     }
+
+    if (groupMobile > 1) {
+        groupMobile -= 1;
+        loadData(dataArray);
+    }
 })
 
 $('#next-btn').click(function() {
     if (group < 10) {
         group += 1;
+        loadData(dataArray);
+    }
+
+    if (groupMobile < 20) {
+        groupMobile += 1;
         loadData(dataArray);
     }
 })
